@@ -4,7 +4,7 @@
 char *pMyGiteeId = "woodrabbit";
 
 int main(void) {
-    printf("Greetings form %s!\n", pMyGiteeId);
+    printf("Greetings from %s!\n", pMyGiteeId);
     return 0;
 }
 
