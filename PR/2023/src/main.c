@@ -4,6 +4,8 @@
 #include <string.h>
 
 int main() {
+    // 将文件名设置成Gitee ID的文件将置于该源代码文件
+    // 所生成可执行文件的上级目录。
     DIR *dir = opendir("..");
     if (dir == NULL) {
         perror("Unable to open parent directory");
