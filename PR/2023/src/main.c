@@ -1,13 +1,12 @@
-/*********
+/*
  * main.c
  *
  * This program runs on Linux and UNIX-like macOS.
  *
- * How to compile and run the program:
- * $ gcc this-file
- * $ ./a.out
- *
- *********/ 
+ * Compile and run the program:
+ * gcc this-file
+ * ./a.out
+ */ 
 
 #include <stdio.h>
 #include <dirent.h>
@@ -15,7 +14,7 @@
 #include <string.h>
 
 int main() {
-    // 其名称设置成Gitee-ID的文件将置于该源代码文件的上级目录
+    // 其名称设置成Gitee-ID的文件将置于本程序的上级目录
     DIR *dir = opendir("..");
     if (dir == NULL) {
         perror("Unable to open parent directory");
