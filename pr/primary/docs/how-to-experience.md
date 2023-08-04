@@ -106,7 +106,7 @@
 
 7. 在自己远程仓库的页面中新建PR，请求(**request**)上游仓库的master分支拉取（**pull**）自己新建分支（本例为*woodrabbit*）的更新。
 
-8. 在[上游仓库](https://gitee.com/openeuler/git-basics/pulls)中查看自己提交的PR并等待maintainer进行合入。
+8. [在上游仓库中查看](https://gitee.com/openeuler/git-basics/pulls)自己提交的PR并等待maintainer进行合入。
 
 
 
