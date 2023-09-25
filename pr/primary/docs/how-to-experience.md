@@ -39,7 +39,7 @@
    ```shell
    git config --global user.name  "woodrabbit" # 请设置成您自己的Gitee-ID
    git config --global user.email "woodrabbit@qq.com" # 请设置成您自己和Gitee-ID关联的提交邮箱
-   git config --global list # 查看设置
+   git config --global --list # 查看设置
    ```
 
 
