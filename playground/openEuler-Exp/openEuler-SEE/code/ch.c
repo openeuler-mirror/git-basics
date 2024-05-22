@@ -17,8 +17,7 @@
         ((x) == 0) ? printf("zero") : \
         printf("positive"))
 
-int main()
-{
+int main() {
     //    original code of  1: 0000 0001b
     // ones' complement of  1: 1111 1110b
     // two's complement of -1: 1111 1111b
