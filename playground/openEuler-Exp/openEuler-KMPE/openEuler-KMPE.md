@@ -50,7 +50,7 @@ cd kernel
 
 🔔 <u>*注意*</u>
 
-您需要在openEuler代码仓（https://gitee.com/openeuler/kernel）获取到正确的内核代码URL地址并更新其源代码包的具体文件名称。
+您需要在[openEuler内核代码仓](https://gitee.com/openeuler/kernel)获取到正确的内核代码URL地址并更新其源代码包的具体文件名称。
 
 解压后的内核源码文件夹名称可能和“*kernel-openEuler-20.03-LTS-SP3*”不一样，我们仅以此为例。
 
