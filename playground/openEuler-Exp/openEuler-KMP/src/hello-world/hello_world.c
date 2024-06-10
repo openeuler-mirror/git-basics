@@ -1,12 +1,14 @@
 /* Hello from Kernel! */
 
-#include <linux/module.h>
+#include <linux/init.h> 
+#include <linux/module.h> 
+#include <linux/kernel.h>
 
-static char* guy = "Kernel";
+static char* guy = "Dinu";
 module_param(guy, charp, 0644);
 MODULE_PARM_DESC(guy, "char* param\n");
 
-static int year = 2021;
+static int year = 2013;
 module_param(year, int, 0644);
 MODULE_PARM_DESC(year, "int param\n");
 
