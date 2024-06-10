@@ -1,6 +1,6 @@
-# openEuler内核模块编程实验
+# openEuler内核模块编程
 
-**openEuler Kernel Module Programming Experiments**
+**openEuler Kernel Module Programming**
 
 内核模块是一种可以扩展运行时内核功能的目标文件（Object File）。大多数类Unix及Windows系统均使用模块，这种机制使得允许内核在运行过程中动态地插入或者移除代码。
 
@@ -16,7 +16,9 @@
 
 
 
-## I. 内核的编译与安装
+## I 内核编译
+
+### 一、内核编译与安装
 
 #### 1. 准备环境
 
@@ -26,6 +28,10 @@
 yum group install -y "Development Tools"
 yum install -y bc
 yum install -y openssl-devel
+```
+注意：如果在安装的过程中出现“Error: GPG check FAILED”错误则可在`yum install`命令后增加`--nogpgcheck`选项，例如：
+```shell
+yum group install -y "Development Tools" --nogpgcheck
 ```
 
 #### 2. 备份
@@ -111,7 +117,7 @@ make modules_install
 ```
 ......
 INSTALL sound/soundcore.ko
-DEPMOD  4.19.154
+DEPMOD  4.19.90
 ```
 
 安装内核：
@@ -123,37 +129,63 @@ make install
 最后的输出类似这样：
 
 ```
-/bin/sh ./arch/arm64/boot/install.sh 4.19.154 \
+/bin/sh ./arch/arm64/boot/install.sh 4.19.90 \
 arch/arm64/boot/Image System.map "/boot"
 dracut-install: Failed to find module 'xen-blkfront'
-dracut: FAILED:  /usr/lib/dracut/dracut-install -D /var/tmp/dracut.tlIdPu/initramfs --kerneldir /lib/modules/4.19.154/ -m virtio_gpu xen-blkfront xen-netfront virtio_blk virtio_scsi virtio_net virtio_pci virtio_ring virtio
+dracut: FAILED:  /usr/lib/dracut/dracut-install -D /var/tmp/dracut.tlIdPu/initramfs --kerneldir /lib/modules/4.19.90/ -m virtio_gpu xen-blkfront xen-netfront virtio_blk virtio_scsi virtio_net virtio_pci virtio_ring virtio
 ```
 
 注意：这里出现的“dracut: FAILED”错误可以忽略之。
 
-#### 6. 重启系统
+#### 6. 重启系统并以新的内核引导
 
+通常，我们需要借助VNC（Virtual Network Computing）窗口在GRUB菜单显示时用上下光标键选择新编译出来的内核来启动系统。或者，对于本实验而言，也可以使用以下方法：
+
+首先查看新编译出来的内核GRUB菜单：
+```shell
+cat /etc/grub2-efi.cfg
+```
+
+我们应该可以找到类似这样的菜单项：
+```
+menuentry 'openEuler (4.19.90) 20.03 (LTS)'
+```
+这就是本例中我们新编译出来的内核版本菜单项（请留意前述编译内核时的一些命令行输出信息）。这时我们可以对默认启动项进行设置：
+```shell
+grub2-set-default 'openEuler (4.19.90) 20.03 (LTS)'
+```
+
+确认：
+```shell
+grub2-editenv list
+```
+
+应该类似如下所示的输出：
+```
+saved_entry=openEuler (4.19.90) 20.03 (LTS)
+boot_success=0
+```
+
+随后重启系统：
 ```shell
 reboot
 ```
 
-然后我们需要借助VNC窗口在GRUB菜单显示时用上下光标键选择新编译出来的内核来启动系统。
-
-我们以新的内核引导系统后，可以继续在VNC窗口中登录系统，也可以以ssh终端登录，然后在并在shell中输入如下命令查看内核版本：
-
+登录并验证：
 ```shell
-uname -r # For instance: 4.19.154
+uname -r # Desire 4.19.90
 ```
-
-可以看出内核版本已更新。
+可以看出内核版本已更新。我们可以通过如下命令查看新内核的一些信息：
+```shell
+ls /lib/modules/`uname -r`
+```
 
 🔔 <u>*注意*</u>
 
 您编译出来的新内核版本通常会与此不同。
 
 
-
-## II. Hello, world!
+### 二、验证：Hello, world!
 
 #### 1. 准备源代码
 
@@ -234,8 +266,6 @@ Linux的内核模块（Module）是一种具有独立功能的程序，它可以
 ```C
 #include <linux/module.h> //包含了对模块的结构定义
 
-MODULE_LICENSE("GPL"); //声明版权
-
 static __init my_module_init(void) {
 	//加载模块
 }
@@ -246,30 +276,44 @@ static __exit my_module_exit(void) {
 
 module_init(my_module_init); //指定初始化函数
 module_exit(my_module_exit); //指定卸载函数
+
+MODULE_LICENSE("GPL"); //声明版权
 ```
 
 
 
-# III. 术语表
 
-本实验中所用术语列表如下：
+## II 两个模块的内核编程
 
-🏷<u>*术语表*<u>
+🔔 <u>*说明*</u>
 
-- KMP
-  - Kernel Module Programming，内核模块编程。
-- KECS
-  - Kunpeng Elastic Cloud Server，鲲鹏弹性云服务器
-- VNC
-  - Virtual Network Console，虚拟网络控制台
-- GRUB
-  - Grand Unified Boot Loader，大一统引导装载程序
+这里简单编写了两个内核模块作为示例，更深入的内核模块编程请参考其他相关资料。
+
+这两个模块分别实现以下功能：
+
+- 模块1：支持数组参数，加载时读入并打印。
+- 模块2：在/proc目录下创建只读文件。
+
+需要注意以下问题：
+
+- 模块可以写在一个C文件中，模块参数传递参考宏定义`module_param(name, type, perm)`，需要用到头文件linux/moduleparam.h。
+- 编写Makefile文件将C源码编译成.ko模块。
+
+🎵 <u>*准备代码*</u>
+
+请参考所附源代码文件（module_1.c、module_2.c以及Makefile）准备您的文件。
+
+🤚 <u>*动手操作*</u>
+
+请参考命令行文件cmdline.sh进行实验。
 
 
 
-# IV. 附：在x64平台上编译内核
+## 附录A 在x64平台上编译内核
 
 除了鲲鹏平台，openEuler操作系统也支持x86_64、RISC-V等架构。兹列出在x86_64平台上的openEuler编译内核的步骤以供参考。
+
+### 一、内核编译与安装
 
 #### 1. 查看系统信息
 
@@ -432,3 +476,26 @@ uname -r # For instance: 4.19.208
 🔔 <u>*注意*</u>
 
 您编译出来的新内核版本通常会与此不同。
+
+
+### 二、验证
+
+从略。
+
+
+
+## 附录B 术语表
+
+本实验中所用术语列表如下：
+
+🏷<u>*术语表*<u>
+
+- KMP
+  - Kernel Module Programming，内核模块编程。
+- KECS
+  - Kunpeng Elastic Cloud Server，鲲鹏弹性云服务器
+- VNC
+  - Virtual Network Console，虚拟网络控制台
+- GRUB
+  - Grand Unified Boot Loader，大一统引导装载程序
+
