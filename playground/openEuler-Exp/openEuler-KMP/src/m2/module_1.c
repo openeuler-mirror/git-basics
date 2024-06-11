@@ -14,9 +14,9 @@ MODULE_PARM_DESC(my_array, "A integer array");
  
 static int __init my_module_init(void) {
     int i;
-    printk("module 1 is loaded!\n");
+    printk("The module 1 is loaded!\n");
 
-    for(i = 0; i < array_num; i++){
+    for(i = 0; i < array_num; i++) {
         printk("%d\n", my_array[i]);
 	}
 
@@ -24,7 +24,7 @@ static int __init my_module_init(void) {
 }
 
 static void __exit my_module_exit(void) {
-    printk("module 1 is removed!\n");
+    printk("The module 1 is removed!\n");
 }
 
 module_init(my_module_init);
