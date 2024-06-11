@@ -225,7 +225,7 @@ dmesg | tail -n5
 [   55.787283] hello_world: loading out-of-tree module taints kernel.
 [   55.787798] hello_world: module verification failed: signature and/or required key missing - tainting kernel
 [   55.788937] Init module.
-[   55.789115] Hello, Dinu, 2013!
+[   55.789115] Hello, Andy, 2024!
 [   55.789283] Exit module.
 ```
 
