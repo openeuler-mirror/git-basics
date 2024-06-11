@@ -12,7 +12,7 @@
 
 🔒🗝 <u>*何时使用root身份*</u>
 
-为系统安全起见，进行应用编程实验时，我们一般以非root用户登录，但在进行内核编译、安装和内核模块编程实验时，为方便起见，我们以root身份登录。
+为系统安全起见，进行应用编程实验时，我们一般以非root用户登录，但在进行内核编译、安装和内核模块编程实验时，为方便起见（不用频繁输入sudo命令），我们以root身份登录。
 
 
 
@@ -205,7 +205,7 @@ make
 加载编译完成的内核模块，并查看加载结果：
 
 ```shell
-insmod hello_world.ko guy="Dinu" year=2013
+insmod hello_world.ko guy="Andy" year=2024
 lsmod | grep hello_world
 # For instance: 
 # hello_world            262144  0

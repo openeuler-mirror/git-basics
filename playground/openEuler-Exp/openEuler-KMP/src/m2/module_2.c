@@ -22,13 +22,13 @@ static const struct file_operations hello_proc_fops = {
 };
 
 static int __init hello_proc_init(void) {
-    printk("module 2 is loaded!\n");
+    printk("The module 2 is loaded!\n");
     proc_create("hello_proc", 0, NULL, &hello_proc_fops);
     return 0;
 }
 
 static void __exit hello_proc_exit(void) {
-	printk("module 2 is removed!\n");
+	printk("The module 2 is removed!\n");
 	remove_proc_entry("hello_proc", NULL);
 }
 
