@@ -107,7 +107,7 @@
 4. 以自己的Gitee-ID为名建立空文件
 
    ```shell
-   cd ./pr/primary/ # 我们的修改都在这个目录进行，并且注意不要修改该目录下的其他文件
+   cd ./primary/pr/ # 我们的修改都在这个目录进行，并且注意不要修改该目录下的其他文件
    cd . > woodrabbit # 以此方法建立以自己Gitee-ID为名的空文件
    ```
    
@@ -208,7 +208,7 @@ https://gitee.com/openeuler/community/blob/master/en/sig-infrastructure/command.
 可以运行仓库中的main.c程序以观看提交后的效果。该main程序可以在Linux和类UNIX的macOS上运行。在Windows上，您可以看一下[openEuler开源创新实践课](https://gitee.com/openeuler/lfs-course/tree/master/lfs-7.7-systemd)中是如何创建虚拟机并安装openEuler操作系统以运行程序的。编译和运行该程序的命令如下所示：
 
 ```shell
-cd pr/primary/src/
+cd primary/pr/src/
 gcc main.c
 ./a.out
 ```
