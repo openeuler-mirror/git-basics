@@ -18,7 +18,7 @@
 
 
 
-## I 注册账号和签署CLA
+## I 注册账号并签署CLA
 
 
 1. [注册Gitee账号](https://gitee.com/signup)并设置好**提交邮箱**
@@ -41,7 +41,7 @@
 
 
 
-## II 准备和设置好git工具软件
+## II 准备好git工具软件
 
 
 1. 参考[Git官网](https://git-scm.com/downloads)安装好git工具软件
@@ -195,13 +195,14 @@
    
 
 这时作为社区的一个contributor，您的作业已经提交完毕。如果您提交的是代码，系统一般会自动进行test。接下来要等待社区的committer进行review，如果合乎要求，他/她会进行`/lgtm`动作。之后就需要社区的maintainer进行最后确认，如果一切顺利，他/她会进行`/approve`动作，这之后，您的作业（或代码）就会合到上游远程仓库里去。关于这些流程的具体命令及其含义可以参考以下文档进行了解：
+
 https://clasign.osinfra.cn/sign/Z2l0ZWUlMkZvcGVuZXVsZXI=
 https://gitee.com/openeuler/community/blob/master/zh/contributors/Gitee-workflow.md
 https://gitee.com/openeuler/community/blob/master/en/sig-infrastructure/command.md
 
 
 
-## V 如何运行本仓库中的程序
+## V 运行本仓库中的程序
 
 
 可以运行仓库中的main.c程序以观看提交后的效果。该main程序可以在Linux和类UNIX的macOS上运行。在Windows上，您可以看一下[openEuler开源创新实践课](https://gitee.com/openeuler/lfs-course/tree/master/lfs-7.7-systemd)中是如何创建虚拟机并安装openEuler操作系统以运行程序的。编译和运行该程序的命令如下所示：
@@ -238,9 +239,7 @@ gcc main.c
 本文所用缩略语如下所示：
 
 - PR
-  - Pull Request，拉取请求
-- MR
-  - Merge Request，合并请求
+  - Pull Request，拉取请求。在有的系统里面又叫MR（Merge Request，合并请求）
 - CLA
   - Contributor License Agreement，贡献者许可协议
 - URL
