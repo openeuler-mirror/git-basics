@@ -225,12 +225,12 @@ gcc ch.c
 以下是在鲲鹏平台上的执行结果：
 
 ```
-sizeof ch is 1, 1
+sizeof ch is 1, 1, 1, 1
 
-         char ch = ff, +255, positive
+         char ch = ffh, +255, positive
 
-  signed char ch = ff,   -1, negative
-unsigned char ch = ff, +255, positive
+  signed char ch = ffh,   -1, negative
+unsigned char ch = ffh, +255, positive
 ```
 
 可以看出：
@@ -242,15 +242,15 @@ unsigned char ch = ff, +255, positive
 
 🤲 <u>*与x64平台比较*</u>
 
-以下是在x64平台上的执行结果：
+以下是在x86_64（即x64）平台上的执行结果：
 
 ```
-sizeof ch is 1, 1
+sizeof ch is 1, 1, 1, 1
 
-         char ch = ff,   -1, negative
+         char ch = ffh,   -1, negative
 
-  signed char ch = ff,   -1, negative
-unsigned char ch = ff, +255, positive
+  signed char ch = ffh,   -1, negative
+unsigned char ch = ffh, +255, positive
 ```
 
 可见，在x64平台上，`char`的默认数据类型与`signed char`同。
