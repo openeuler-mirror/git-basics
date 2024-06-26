@@ -101,7 +101,7 @@
    git status # On branch woodrabbit
    ```
    
-   注意：通常，我们会新建一个开发分支进行开发。开发分支的名称随意，通常取名为dev、develop、development等，本例中我们将开发分支设置成自己Gitee-ID的名称是为了避免和上游仓库的开发分支重名，if any……
+   注意：通常，我们会新建一个开发分支进行开发。开发分支的名称随意，通常取名为dev、develop、development等，本例中我们将开发分支设置成了自己Gitee-ID的名称。
 
 
 4. 以自己的Gitee-ID为名建立空文件
