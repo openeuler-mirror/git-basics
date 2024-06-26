@@ -96,12 +96,12 @@
 3. 创建自己新的（开发）分支
 
    ```shell
-   git switch -c woodrabbit # 这里是以自己Gitee-ID为名创建了分支
+   git switch -c dev
    git branch
-   git status # On branch woodrabbit
+   git status # On branch dev
    ```
    
-   注意：通常，我们会新建一个开发分支进行开发。开发分支的名称随意，通常取名为dev、develop、development等，本例中我们将开发分支设置成自己Gitee-ID的名称是为了避免和上游仓库的开发分支重名，if any……
+   通常，我们会新建一个开发分支进行开发。开发分支的名称随意，比如取名为dev、develop、development或其他更符合当前项目开发情况的名称。
 
 
 4. 以自己的Gitee-ID为名建立空文件
@@ -131,7 +131,7 @@
    但是第一次直接push时会报错，提示要用以下命令：
    ```shell
    # 第一次push时，将以自己Gitee-ID命名的本地、当前分支与远程分支关联
-   git push --set-upstream origin woodrabbit # 将“woodrabbit”替换成自己的账号提交
+   git push --set-upstream origin dev
    ```
    
    注意：(1) 在这个过程中需要输入自己的Gitee账号及其登录密码（输入密码时屏幕上不会有任何回显）。(2) 如果后续还有committed的内容要推送到远端仓库的话，直接用`git push`命令就行了。
@@ -148,7 +148,7 @@
 ## IV. 提交PR
 
 
-按前述步骤`push`之后，刷新自己远程仓库的页面，就会出现刚刚新建的分支（本例为*woodrabbit*）：
+按前述步骤`push`之后，刷新自己远程仓库的页面，就会出现刚刚新建的“*dev*”分支：
 
 ![woodrabbit-git-basics-new-branch](./images/woodrabbit-git-basics-new-branch.png "woodrabbit git basics new branch")
 
@@ -171,15 +171,15 @@
 
    ![woodrabbit-git-basics-complete-pull-request](./images/woodrabbit-git-basics-complete-pull-request.png "woodrabbit git basics complete pull request")
 
-   选中自己新建的分支（本例是*woodrabbit*分支）并将之合并到上游仓库的master分支。
+   选中自己新建的“*dev*”分支并将之合并到上游仓库的master分支。
    
-   填写标题文字和注释，比如标题可以这样写（这个例子将Gitee-ID置于句首是为了方便审阅者看清是谁提交了PR。注意*woodrabbit*要改成自己的Gitee-ID）：
+   填写标题文字和注释，比如标题可以这样写（这个例子将Gitee-ID置于句首是为了在教学活动中方便审阅者看清是谁提交了自己的作业。注意要将*woodrabbit*改成自己的Gitee-ID）：
    
    *woodrabbit - 提交了以自己Gitee-ID命名的文件*
    
-   注释可以说明此次提交做了哪些改动（及原因）。简单起见，本例可以这样写：
+   注释可以说明此次提交做了哪些改动（及原因）。本例为简单起见是这样写的：
    
-   *提交了以自己Gitee-ID（woodrabbit）命名的文件。*
+   *提交了以自己Gitee-ID命名的文件。*
 
    为什么要以自己的Gitee-ID命名文件呢？因为这样可以保证提交的文件不重名，代码合入时就不会引发冲突。另外，运行该仓库中的主程序就会将自己的ID打印出来。
    
@@ -189,10 +189,21 @@
    
    ![openEuler-git-basics-my-pull-request](./images/openEuler-git-basics-my-pull-request.png "openEuler-git-basics-my-pull-request")
 
-   下图展示了另一次提交PR的例子仅供参考：
+   下面展示了另外一些提交PR的例子仅供参考：
+   
+   
+   
+   其一：
    
    ![woodrabbit-pr-2](./images/woodrabbit-pr-2.png "woodrabbit-pr-2")
    
+   
+   
+   其二：
+   
+   ![woodrabbit-pr-3](./images/woodrabbit-pr-3.png "woodrabbit-pr-3")
+
+
 
 这时作为社区的一个contributor，您的作业已经提交完毕。如果您提交的是代码，系统一般会自动进行test。接下来要等待社区的committer进行review，如果合乎要求，他/她会进行`/lgtm`动作。之后就需要社区的maintainer进行最后确认，如果一切顺利，他/她会进行`/approve`动作，这之后，您的作业（或代码）就会合到上游远程仓库里去。关于这些流程的具体命令及其含义可以参考以下文档进行了解：
 
