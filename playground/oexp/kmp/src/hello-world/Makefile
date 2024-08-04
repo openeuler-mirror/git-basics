@@ -9,4 +9,4 @@ default:
 
 .PHONY:clean
 clean:
-	rm -f *.ko *.mod.c *.o *.order *.symvers
+	rm -f *.ko *.mod *.mod.? *.o *.order *.symvers
