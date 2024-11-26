@@ -23,7 +23,7 @@ int main() {
     // two's complement of -1: 1111 1111b
     char ch = -1;
 
-    printf("sizeof ch is %d, %d, %d, %d\n\n", sizeof(char), sizeof(ch), sizeof(signed char), sizeof(unsigned char));
+    printf("sizeof ch is %zu, %zu, %zu, %zu\n\n", sizeof(char), sizeof(ch), sizeof(signed char), sizeof(unsigned char));
 	
     printf("         char ch = %2xh, %+4d, ",                ch & 0xff,                ch);                PNP(ch); printf("\n\n");
     printf("  signed char ch = %2xh, %+4d, ",   (signed char)ch & 0xff,   (signed char)ch);   PNP((signed char)ch); printf("\n");
