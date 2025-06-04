@@ -15,7 +15,7 @@
 
 int main() {
     // 其名称设置成Gitee-ID的文件将置于本程序的上级目录
-    DIR *dir = opendir("..");
+    DIR *dir = opendir("../../../playground/pr/");
     if (dir == NULL) {
         perror("Unable to open parent directory");
         return 1;
