@@ -220,7 +220,7 @@ https://gitee.com/openeuler/community/blob/master/en/sig-infrastructure/command.
 
 ```shell
 gcc hello.c -o hello
-./hello ../../../playground/pr/
+./hello ../../../playground/primary.pr/
 ```
 
 这样，凡是正确提交并被合入PR了的Gitee-ID都可以在电脑屏幕上被打印出来…… :)
