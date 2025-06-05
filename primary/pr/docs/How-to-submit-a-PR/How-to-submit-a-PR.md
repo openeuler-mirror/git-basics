@@ -213,15 +213,14 @@ https://gitee.com/openeuler/community/blob/master/en/sig-infrastructure/command.
 
 
 
-## V 运行本仓库中的程序
+## V 运行hello程序
 
 
-可以运行仓库中的main.c程序以观看提交后的效果。该main程序可以在Linux和类UNIX的macOS上运行。在Windows上，您可以看一下[openEuler开源创新实践课](https://gitee.com/openeuler/lfs-course/tree/master/lfs-7.7-systemd)中是如何创建虚拟机并安装openEuler操作系统以运行程序的。编译和运行该程序的命令如下所示：
+可以编译、运行src目录下的hello.c程序以观看提交后的效果，该程序可以在Linux和类UNIX的macOS上运行，下面是一个示例：
 
 ```shell
-cd primary/pr/src/
-gcc main.c
-./a.out
+gcc hello.c -o hello
+./hello ../../../playground/pr/
 ```
 
 这样，凡是正确提交并被合入PR了的Gitee-ID都可以在电脑屏幕上被打印出来…… :)
