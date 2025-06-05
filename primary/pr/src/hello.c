@@ -5,7 +5,7 @@
  *
  * Compile and run the program:
  *   gcc hello.c -o hello
- *   ./hello PATH-TO-PR-PLAYGROUND
+ *   ./hello PATH-TO-PRIMARY.PR-PLAYGROUND
  *   其名称设置成Gitee-ID的文件默认置于playground的primary.pr目录。相对于当前目录，则为：
  *   ./hello ../../../playground/primary.pr/
  */ 
