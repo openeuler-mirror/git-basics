@@ -6,8 +6,8 @@
  * Compile and run the program:
  *   gcc hello.c -o hello
  *   ./hello PATH-TO-PR-PLAYGROUND
- *   其名称设置成Gitee-ID的文件默认置于playground的pr目录。相对于当前目录，则为：
- *   ./hello ../../../playground/pr/
+ *   其名称设置成Gitee-ID的文件默认置于playground的primary.pr目录。相对于当前目录，则为：
+ *   ./hello ../../../playground/primary.pr/
  */ 
 
 #include <stdio.h>
@@ -17,13 +17,13 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        printf("\nUsage:\n%s PATH-TO-PR-PLAYGROUND\n\n", argv[0]);
+        printf("\nUsage:\n%s PATH-TO-PRIMARY.PR-PLAYGROUND\n\n", argv[0]);
         return 0;
     }
 
     DIR *dir = opendir(argv[1]);
     if (dir == NULL) {
-        perror("Unable to open PR playground directory");
+        perror("Unable to open PRIMARY.PR playground directory");
         return -1;
     }
 
