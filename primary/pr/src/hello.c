@@ -1,11 +1,13 @@
 /*
- * main.c
+ * hello.c
  *
  * This program runs on Linux and UNIX-like macOS.
  *
  * Compile and run the program:
- * gcc this-file
- * ./a.out
+ *   gcc hello.c -o hello
+ *   ./hello PATH-TO-PR-PLAYGROUND
+ *   其名称设置成Gitee-ID的文件默认置于playground的pr目录。相对于当前目录，则为：
+ *   ./hello ../../../playground/pr/
  */ 
 
 #include <stdio.h>
@@ -13,12 +15,16 @@
 #include <unistd.h>
 #include <string.h>
 
-int main() {
-    // 其名称设置成Gitee-ID的文件将置于本程序的上级目录
-    DIR *dir = opendir("../../../playground/pr/");
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        printf("\nUsage:\n%s PATH-TO-PR-PLAYGROUND\n\n", argv[0]);
+        return 0;
+    }
+
+    DIR *dir = opendir(argv[1]);
     if (dir == NULL) {
-        perror("Unable to open parent directory");
-        return 1;
+        perror("Unable to open PR playground directory");
+        return -1;
     }
 
     struct dirent *entry;
@@ -40,3 +46,4 @@ int main() {
     printf(":)\n");
     return 0;
 }
+
