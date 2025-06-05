@@ -107,7 +107,7 @@
 4. 以自己的Gitee-ID为名建立空文件
 
    ```shell
-   cd ./playground/pr/ # 我们的修改都在这个目录进行，并且注意不要修改该目录下的其他文件
+   cd ./playground/primary.pr/ # 我们的修改都在这个目录进行，并且注意不要修改该目录下的其他文件
    cd . > woodrabbit # 以此方法建立以自己Gitee-ID为名的空文件
    ```
    
